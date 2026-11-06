@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zameen — Land Record &amp; Plot Fraud Checker (UX Concept)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">Z</span> Zameen</div>
+  <p class="tagline">Know the plot before you pay. — Land record &amp; plot fraud checker for Pakistan</p>
+  <p class="sample-note">SAMPLE DATA — every plot, file number, society and figure shown here is invented for this UX concept demo. No real plot, file number, or person appears. Zameen is an unofficial concept, not a legal or land-record service: always confirm a plot at the registry office and with the society before paying anything.</p>
+</header>
+
+<main>
+  <!-- Plot / file-number lookup -->
+  <section class="card">
+    <p class="eyebrow">PLOT VERIFICATION</p>
+    <h2>Check a plot before you pay</h2>
+    <p class="hint">Enter a plot's file number. Zameen reads the record back in plain language: fard, owner chain, society NOC, stay orders and mortgages.</p>
+    <div class="verify-row">
+      <label>File number
+        <input id="file-input" type="text" value="ZM-2026-214" spellcheck="false">
+      </label>
+      <button id="verify-btn">Verify plot</button>
+    </div>
+    <p class="hint">Try: ZM-2026-214 (safe), ZM-2026-077 (high risk), ZM-2026-310 (caution).</p>
+    <div id="verify-result"></div>
+  </section>
+
+  <!-- Society & NOC checker -->
+  <section class="card">
+    <p class="eyebrow">SOCIETY &amp; NOC CHECKER</p>
+    <h2>Is the society safe to buy in?</h2>
+    <p class="hint">A valid society NOC is the first thing to check. An expired NOC means the society should not be selling new files at all.</p>
+    <div class="filters">
+      <label>Society
+        <input id="society-search" type="text" placeholder="Search a society…" spellcheck="false">
+      </label>
+      <label>City
+        <select id="society-city"></select>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="society-risk"> Flagged societies only
+      </label>
+    </div>
+    <p id="society-summary"></p>
+    <div id="society-list"></div>
+  </section>
+
+  <!-- True-cost calculator + fee flagger -->
+  <section class="card">
+    <p class="eyebrow">TRUE COST CALCULATOR</p>
+    <h2>What will it really cost?</h2>
+    <p class="hint">Stamp duty 1%, registration 1%, CVT 2% of the DC rate. Know the full official amount before the registry office — no hidden fees.</p>
+    <div class="filters">
+      <label>DC rate (Rs)
+        <input id="dc-rate" type="number" min="0" step="1000" value="4500000">
+      </label>
+      <label>Fee demanded by agent / patwari (Rs)
+        <input id="fee-demanded" type="number" min="0" step="100" value="60000">
+      </label>
+    </div>
+    <div id="cost-result"></div>
+    <div id="fee-result"></div>
+    <p class="hint">Sample: a 10-marla plot at a DC rate of Rs 45 lakh costs Rs 1,80,000 in official charges. The official fard fee is Rs 500 — a demand of Rs 60,000 for it is a Rs 59,500 overcharge.</p>
+  </section>
+
+  <!-- Document checklist -->
+  <section class="card">
+    <p class="eyebrow">DOCUMENT CHECKLIST</p>
+    <h2>Collect these before paying any token</h2>
+    <p class="hint">Tick each document off as you collect it — your checklist is saved on this device.</p>
+    <p id="checklist-progress"></p>
+    <ul id="checklist"></ul>
+  </section>
+
+  <!-- Fraud red-flag spotter -->
+  <section class="card">
+    <p class="eyebrow">FRAUD RED-FLAG SPOTTER</p>
+    <h2>Eight ways a plot deal goes wrong</h2>
+    <p class="hint">If any of these shows up, stop and verify independently at the society office and the registry — before any token changes hands.</p>
+    <ul id="red-flags" class="flags-list"></ul>
+  </section>
+
+  <button id="reset-demo" class="secondary">Reset demo data</button>
+</main>
+
+<footer>
+  <p>Zameen is an unofficial UX concept by Muhammad Abbas Khan — not a real land-record service.</p>
+  <p>Available for new projects: abbasmomand98@gmail.com</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
